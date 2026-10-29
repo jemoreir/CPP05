@@ -1,20 +1,16 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <iostream>
 
 int main()
 {
     try
     {
-        Bureaucrat a("Jean", 149);
-        Bureaucrat b("Bruno", 2);
-        std::cout << a << "\n" << b << std::endl;
-        b.incrementGrade();
+        Bureaucrat a("Jean", 20);
+        Form b("B28", 50, 50);
         std::cout << b << std::endl;
-        b = a;
+        a.signForm(b);
         std::cout << b << std::endl;
-        b.decrementGrade();
-        std::cout << b << std::endl;
-        b.decrementGrade();
     }
     catch(const std::exception& e)
     {
