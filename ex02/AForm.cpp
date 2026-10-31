@@ -55,9 +55,9 @@ int AForm::getGradeToSign(void) const
     return (this->GradeToSign);
 }
 
-void AForm::beSigned(const Bureaucrat& Bureaucrat)
+void AForm::beSigned(const Bureaucrat& bureaucrat)
 {
-    if (Bureaucrat.getGrade() <= this->GradeToSign)
+    if (bureaucrat.getGrade() <= this->GradeToSign)
         isSigned = true;
     else
         throw GradeTooLowException();

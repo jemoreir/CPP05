@@ -18,12 +18,13 @@ public:
     AForm(const std::string& name, const int gradeToS, const int gradeToE);
     AForm(const AForm& other);
     AForm& operator=(const AForm& other);
-    ~AForm();
+    virtual ~AForm();
     std::string getName(void) const;
     bool getIsSigned(void) const;
     int getGradeToSign(void) const;
     int getGradeToExecute(void) const;
-    void beSigned(const Bureaucrat& Bureaucrat);
+    void beSigned(const Bureaucrat& bureaucrat);
+    virtual void beExecute(const Bureaucrat& bureaucrat) = 0;
 
 class GradeTooHighException : public std::exception
 {
