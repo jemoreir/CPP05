@@ -4,6 +4,8 @@
 #include "AForm.hpp"
 #include <string>
 
+class bureaucrat;
+
 class ShrubberyCreationForm : public AForm
 {
 private:

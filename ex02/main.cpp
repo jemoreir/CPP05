@@ -1,16 +1,14 @@
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include <iostream>
 
 int main()
 {
     try
     {
-        Bureaucrat a("Jean", 20);
-        AForm b("B28", 50, 50);
-        std::cout << b << std::endl;
-        a.signForm(b);
-        std::cout << b << std::endl;
+        Bureaucrat Jean("Jean", 100);
+        ShrubberyCreationForm B28("garden");
+        Jean.signForm(B28);
     }
     catch(const std::exception& e)
     {

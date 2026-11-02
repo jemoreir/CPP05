@@ -1,4 +1,5 @@
 #include "ShrubberyCreationForm.hpp"
+#include "Bureaucrat.hpp"
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137)
@@ -32,5 +33,19 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void ShrubberyCreationForm::beExecute(const Bureaucrat& bureaucrat)
 {
-    std::ofstream file ("")
+    if (getIsSigned() == true && bureaucrat.getGrade() <= 137)
+    {
+        std::ofstream file(Target + "_shrubbery");
+        if (!file.is_open())
+            std::cerr << "Error: No permission to open file.\n";
+        else
+        {
+            file << "    *\n"
+                    "   / \\\n"
+                    "  /   \\\n"
+                    " / | | \\\n"
+                    "   | |  \\\n";
+            
+        }
+    }
 }
