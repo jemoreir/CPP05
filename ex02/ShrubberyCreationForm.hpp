@@ -4,7 +4,7 @@
 #include "AForm.hpp"
 #include <string>
 
-class bureaucrat;
+class Bureaucrat;
 
 class ShrubberyCreationForm : public AForm
 {
@@ -16,7 +16,7 @@ public:
     ShrubberyCreationForm(const ShrubberyCreationForm& other);
     ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
     ~ShrubberyCreationForm();
-    void beExecute(const Bureaucrat& bureaucrat);
+    void execute(const Bureaucrat& executor) const;
 };
 
 #endif

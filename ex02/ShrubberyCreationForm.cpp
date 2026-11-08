@@ -1,10 +1,11 @@
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 #include <fstream>
+#include <stdexcept>
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137)
 {
-    Target = "white_paper";
+    Target = "Empty Place";
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137)
@@ -12,7 +13,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
     Target = target;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other)
 {
     Target = other.Target;
 }
@@ -21,6 +22,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 {
     if (this != &other)
     {
+        AForm::operator=(other);
         Target = other.Target;
     }
     return (*this);
@@ -31,21 +33,18 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 }
 
-void ShrubberyCreationForm::beExecute(const Bureaucrat& bureaucrat)
+void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {
-    if (getIsSigned() == true && bureaucrat.getGrade() <= 137)
+    AForm::checkExecution(executor);
+    std::ofstream file((Target + "_shrubbery").c_str());
+    if (!file.is_open())
+        throw std::runtime_error("File can't be open!");
+    else
     {
-        std::ofstream file(Target + "_shrubbery");
-        if (!file.is_open())
-            std::cerr << "Error: No permission to open file.\n";
-        else
-        {
-            file << "    *\n"
-                    "   / \\\n"
-                    "  /   \\\n"
-                    " / | | \\\n"
-                    "   | |  \\\n";
-            
-        }
+        file << "   *\n"
+                "  / \\\n"
+                " /   \\\n"
+                "/ | | \\\n"
+                "  | |\n";
     }
 }

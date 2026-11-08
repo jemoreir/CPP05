@@ -72,3 +72,11 @@ std::ostream& operator<<(std::ostream& out, const AForm& other)
         out << "False";
     return (out);
 }
+
+void AForm::checkExecution(const Bureaucrat& other) const
+{
+    if (isSigned == false)
+        throw FormNotSigned();
+    else if (other.getGrade() > GradeToExecute)
+        throw GradeTooLowException();
+}
