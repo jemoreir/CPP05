@@ -2,39 +2,32 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
 
 int main()
 {
     try
     {
-        time_t a = time(NULL);
-        srand(a);
-        Bureaucrat Jean("Jean", 1);
-        ShrubberyCreationForm B28("garden");
-        Jean.executeForm(B28);
-        Jean.signForm(B28);
-        Jean.executeForm(B28);
-        std::cout << "----------//----------" << std::endl;
-        RobotomyRequestForm B29("Jean");
-        Jean.executeForm(B29);
-        Jean.signForm(B29);
-        Jean.executeForm(B29);
-        Jean.executeForm(B29);
-        Jean.executeForm(B29);
-        std::cout << "----------//----------" << std::endl;
-        PresidentialPardonForm B30("Jean");
-        Jean.executeForm(B30);
-        Jean.signForm(B30);
-        Jean.executeForm(B30);
-        std::cout << "----------//----------" << std::endl;
-        AForm *form = new ShrubberyCreationForm("empty place");
-        Jean.executeForm(*form);
-        Jean.signForm(*form);
-        Jean.executeForm(*form);
+        Bureaucrat Jean("Jean", 15);
+        Intern Bruno;
+        AForm *form = Bruno.makeForm("", "Android");
+        AForm *form1 = Bruno.makeForm("shrubbery creation", "Android");
+        AForm *form2 = Bruno.makeForm("robotomy request", "Android");
+        AForm *form3 = Bruno.makeForm("presidential pardon", "Android");
+        if (form1 && form2 && form3)
+        {
+            Jean.signForm(*form1);
+            Jean.executeForm(*form1);
+            Jean.signForm(*form2);
+            Jean.executeForm(*form2);
+            Jean.signForm(*form3);
+            Jean.executeForm(*form3);
+        }
         delete form;
+        delete form1;
+        delete form2;
+        delete form3;
     }
     catch(const std::exception& e)
     {
